@@ -1,15 +1,26 @@
 .header {
-    background-color: #006b00;
+    background-color: lightgray;
     height: 8vh;
     width: 100%;
 }
 
 .nav {
+    padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 5vh;
-    align-items: flex-end;
+    align-items: center;
     text-decoration: none;
+}
+
+a {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+a > img {
+    width: 50%;
+    text-align: center;
 }
 
 .link {
@@ -19,8 +30,4 @@
     color: black;
     border-radius: 3px;
     width: relative;
-}
-
-.link:hover {
-    background-color: whitesmoke;
 }
