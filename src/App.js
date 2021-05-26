@@ -1,6 +1,9 @@
 import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
-import { Books } from './Components/Books/Books';
 import { Header } from './Components/Header/Header';
+import { Books } from './Components/Books/Books';
+import { Users } from './Components/Users/Users';
+import { Sales } from './Components/Sales/Sales';
+import { Operators } from './Components/Operators/Operators';
 import './App.css'
 
 function App() {
@@ -10,23 +13,21 @@ function App() {
         <Header />
         <Switch>
 
-        <Route path="/livros">
+        <Route exact path="/livros">
           <Books />
         </Route>
 
-        {/* <Route path="/usuarios">
-          <Usuarios />
+        <Route exact path="/usuarios">
+          <Users />
         </Route>
 
-        <Route path="/operadores">
-          <Opeadores />
+        <Route exact path="/vendas">
+          <Sales />
         </Route>
 
-        <Route path="/vendas">
-          <Vendas />
-        </Route> */}
-
-
+        <Route exact path="/operadores">
+          <Operators />
+        </Route>
         </Switch>
       </Routes>
     </div>
