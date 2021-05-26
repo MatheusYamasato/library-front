@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
+import { createBook } from '../../api/api'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -13,11 +13,7 @@ const ButtonForm = () => {
     const classes = useStyles();
   
     return (
-        <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            endIcon={<Icon>send</Icon>}>
+        <Button onClick={createBook} variant="contained" color="primary" className={classes.button}>
             Send
         </Button>
     );

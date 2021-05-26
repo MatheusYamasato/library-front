@@ -9,7 +9,13 @@ export const buscaLivros = async(url, setDado) => {
     setDado(resposta.data)
 }
 
-export const posta = async(url, setDado) => {
-    const post = await api.post(url)
-    setDado(post)
+export const createBook = (url, image, title, author, category, price) => {
+    const post = api.post('/books', {
+        image: image,
+        title: title,
+        author: author,
+        category: category,
+        price: price
+    })
+    return post
 }

@@ -4,6 +4,7 @@ import { Books } from './Components/Books/Books';
 import { Users } from './Components/Users/Users';
 import { Sales } from './Components/Sales/Sales';
 import { Operators } from './Components/Operators/Operators';
+import FormBooks from './Components/FormBooks/FormBooks';
 import './App.css'
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
         <Route exact path="/operadores">
           <Operators />
         </Route>
+
+        <Route path="/livros/inserirlivro">
+          <FormBooks />  
+        </Route> 
         </Switch>
       </Routes>
     </div>
