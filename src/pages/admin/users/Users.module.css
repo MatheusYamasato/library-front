@@ -1,0 +1,26 @@
+main {
+    margin: 1rem 1rem 2rem 1rem;
+    padding: 10px;
+}
+  
+main a {
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px;
+    font-weight: bold;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #40813a;
+    color: snow;
+    margin: 1rem 0.5rem 1rem 2rem;
+}
+  
+main a:hover {
+    background-color: lightgray;
+    color: #40813a;
+}
+  
+main div{
+    margin-top:1.5rem;
+    background-color:#f9fcfb
+}

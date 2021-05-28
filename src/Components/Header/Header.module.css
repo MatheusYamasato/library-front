@@ -5,22 +5,23 @@
 }
 
 .nav {
-    padding: 10px;
+    padding: 12px;
     display: flex;
-    justify-content: space-between;
-    height: 5vh;
+    justify-content: space-evenly;
+    height: 6vh;
     align-items: center;
     text-decoration: none;
 }
 
-a {
-    width: 50%;
-    display: flex;
-    justify-content: center;
+
+.logoContainer {
+    width: 130px;
 }
-a > img {
-    width: 50%;
-    text-align: center;
+
+.logoContainer img{
+    width: 100%;
+    margin: 0.5rem;
+
 }
 
 .link {
@@ -30,4 +31,8 @@ a > img {
     color: black;
     border-radius: 3px;
     width: relative;
+}
+
+.link:hover{
+    color:#40813a;
 }
