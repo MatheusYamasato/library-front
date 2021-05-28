@@ -28,6 +28,17 @@ export default function Users() {
     getUsers()
   }, []);
 
+  async function handleDelete(id) {
+    if(window.confirm("Deseja realmente excluir este livro?")) {
+      let response = await api.delete('users/'+id)
+      if(response.status === 200) {
+        window.location.href = '/admin/usuarios'
+      } else {
+        alert('Ocorreu um erro! Por favor, tente novamente')
+      }
+    }
+  }
+
   const classes = useStyles();
 
   return (
@@ -61,14 +72,17 @@ export default function Users() {
                 <TableCell align="center">{user.name}</TableCell>
                 <TableCell align="center">{user.email}</TableCell>
                 <TableCell align="center">{user.zipcode}</TableCell>
-                <ButtonGroup align="center" color="primary" aria-label="outlined primary button group">
+                <TableCell align="center">
+                <ButtonGroup color="primary" aria-label="outlined primary button group">
                 <Button href={'/admin/usuarios/alterarusuario/'+user.id} color="primary">Atualizar</Button>
-              </ButtonGroup>
+                <Button onClick={() => handleDelete(user.id)} color="danger">Excluir</Button>
+                </ButtonGroup>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
     </>
-  );
+  );  
 }

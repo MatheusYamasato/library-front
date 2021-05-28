@@ -11,11 +11,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
+import style from '../users/Users.module.css'
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
+  table: {minWidth: 650,},
 });
 
 export default function Books() {
@@ -33,12 +32,23 @@ export default function Books() {
       }
       getBooks()
     }, []);
-    
+  
+  async function handleDelete(id) {
+    if(window.confirm("Deseja realmente excluir este livro?")) {
+      let response = await api.delete('books/'+id)
+      if(response.status === 200) {
+        window.location.href = '/admin/livros'
+      } else {
+        alert('Ocorreu um erro! Por favor, tente novamente')
+      }
+    }
+  }
+
   const classes = useStyles();
 
   return (
     <main> 
-    <Link exact to="/admin/livros/inserirlivro">Inserir Livro</Link>
+    <Link class={style.link} exact to="/admin/livros/inserirlivro">Inserir Livro</Link>
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
@@ -61,9 +71,12 @@ export default function Books() {
               <TableCell align="center">{book.author}</TableCell>
               <TableCell align="center">{book.category}</TableCell>
               <TableCell align="center">R$ {converter(book.price)}</TableCell>
-              <ButtonGroup color="primary" aria-label="outlined primary button group">
+              <TableCell align="center">
+                <ButtonGroup color="primary" aria-label="outlined primary button group">
                 <Button href={'/admin/livros/alterarlivro/'+book.id} color="primary">Atualizar</Button>
-              </ButtonGroup>
+                <Button onClick={() => handleDelete(book.id)} color="danger">Excluir</Button>
+                </ButtonGroup>
+                </TableCell>
             </TableRow>
           ))}
         </TableBody>

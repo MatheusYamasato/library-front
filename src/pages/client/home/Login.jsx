@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import api from '../../../services/api'
+import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import api from "../../../services/api";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Tech Business
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -25,39 +25,41 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor:'#00A868' 
+    backgroundColor: "#00A868",
   },
 }));
 
 export default function SignIn() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-
-  async function HandleSubmit() {
-    useEffect(() => {
-      async function getOperators() {
-        const response = await api.get('/operators/login')
-        if(response === 'Login realizado com sucesso') {
-          window.location.href = "/admin"
-        }
-      }
-      getOperators()
-    }, []);
-  }
+  // function HandleSubmit() {
+  //   window.location.href = "/admin"
+  //   // const data = {
+  //   //   email: email,
+  //   //   password: password
+  //   // }
+  //   // if(response.status === 200) {
+  //   // const response = api.post('/operators/login', data)
+  //   // } else {
+  //   //   window.location.href = "/login"
+  //   // }
+  // }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -75,6 +77,8 @@ export default function SignIn() {
             id="email"
             label="Email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
             autoFocus
           />
@@ -85,16 +89,18 @@ export default function SignIn() {
             fullWidth
             name="password"
             label="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             id="password"
             autoComplete="current-password"
-          /> 
+          />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             className={classes.submit}
-            onClick={HandleSubmit}
+            href={"/admin"}
           >
             Entrar
           </Button>

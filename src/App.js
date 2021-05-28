@@ -40,11 +40,11 @@ function App() {
                 <Route exact path="/admin/operadores/inseriroperador" component={OperatorsPost} />
             </Switch>
         </BrowserRouter>
-        {/* <BrowserRouter> 
+        <BrowserRouter> 
               <Switch>  
                 <Route exact path="/login" component={Login} />
               </Switch>
-              </BrowserRouter> */}
+        </BrowserRouter>
       </>
   );
 }     
